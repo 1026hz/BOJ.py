@@ -4,7 +4,7 @@ N = int(sys.stdin.readline())
 lst = []
 
 for _ in range(N):
-    age, name = map(str, input().split())
+    age, name = map(str, sys.stdin.readline().split())
     age = int(age)
     lst.append([age, name])
 
