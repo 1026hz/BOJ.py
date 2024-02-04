@@ -1,26 +1,26 @@
 import sys
-input = sys.stdin.readline
 
-yeondu = list(input().rstrip())
-n = int(input())
-scoreBoard = {}
+yeondu = sys.stdin.readline().rstrip()
+
+n = int(sys.stdin.readline())
+score_board = {}
 
 for _ in range(n):
-    team = input().rstrip()
-    nowScore = 1
-    scores = []
+
+    team = sys.stdin.readline().rstrip()
+    score = 1
+    love = []
 
     for name in ['L', 'O', 'V', 'E']:
-        scores.append(team.count(name) + yeondu.count(name))
+        love.append(yeondu.count(name) + team.count(name))
 
-    for i in range(len(scores)):
-        for j in range(i+1, len(scores)):
-            nowScore *= (scores[i] + scores[j])
+    for i in range(4):
+        for j in range(i+1, 4):
+            score *= (love[i] + love[j])
 
-    scoreBoard[team] = nowScore % 100
+    score_board[team] = score % 100
 
-scoreBoard = list(scoreBoard.items())
-scoreBoard.sort(key=lambda x: x[0])
-scoreBoard.sort(key=lambda x: x[1], reverse=True)
-
-print(scoreBoard[0][0])
+ans = list(score_board.items())
+ans.sort(key=lambda x: x[0])
+ans.sort(key=lambda x: x[1], reverse=True)
+print(ans[0][0])
