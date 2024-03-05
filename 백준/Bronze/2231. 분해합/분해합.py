@@ -1,15 +1,20 @@
-N = int(input())
-lst = []
-for i in range(1,N):
-    sum = 0
-    i = str(i)
-    for j in range(len(i)):
-        sum += int(i[j])
-    sum += int(i)
-    if sum == N:
-        lst.append(i)
+import sys
 
-if len(lst) == 0:
-    print(0)
-else:
-    print(min(lst))
+def hap(num):
+    num = str(num)
+    tmp = int(num)
+
+    for i in num:
+        tmp += int(i)
+
+    return tmp
+
+
+N = int(sys.stdin.readline())
+
+for i in range(1, N):
+    if hap(i) == N:
+        print(i)
+        sys.exit()
+
+print(0)
