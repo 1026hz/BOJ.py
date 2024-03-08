@@ -5,6 +5,7 @@ n = len(S)
 cnt = 1
 dic = {}
 dic[S] = 1
+ans = 1
 
 while cnt <= n:
 
@@ -13,7 +14,8 @@ while cnt <= n:
             dic[S[i:i+cnt]] += 1
         else:
             dic[S[i:i+cnt]] = 1
+            ans += 1
 
     cnt += 1
 
-print(len(dic.keys()))
+print(ans)
