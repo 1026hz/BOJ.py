@@ -19,8 +19,8 @@ int main()
 
     for(int i=0; i<2; i++){
         for(int j=0; j<7; j++){
-            ans += student[i][j]/2;
-            if (student[i][j]%2 > 0) ans += 1;
+            ans += student[i][j]/k;
+            if (student[i][j]%k > 0) ans += 1;
         }
     }
 
