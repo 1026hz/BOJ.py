@@ -8,21 +8,20 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         StringTokenizer token;
 
-        HashMap<String, Integer> check = new HashMap<>();
+        Set<String> check = new HashSet<>();
         int ans = 0;
 
         for(int i=0; i<n; i++){
             token = new StringTokenizer(br.readLine());
             String name = token.nextToken();
             if (name.equals("ENTER")){
-                check = new HashMap<>();
-                continue;
-            }
-            if (!check.containsKey(name)) {
-                check.put(name, 1);
-                ans++;
+                ans += check.size();
+                check = new HashSet<>();
+            } else {
+                check.add(name);
             }
         }
+        ans += check.size();
         System.out.println(ans);
     }
 }
