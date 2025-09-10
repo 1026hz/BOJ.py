@@ -5,26 +5,24 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int m = Integer.parseInt(st.nextToken());
-        int n = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+        boolean[] numbers = new boolean[N+1];
+        numbers[0] = true;
+        numbers[1] = true;
 
-        boolean[] check = new boolean[1000001];
-        StringBuilder sb = new StringBuilder();
-        check[0] = true;
-        check[1] = true;
 
-        for(int i=2; i*i<=n; i++){
-            if(!check[i]){
-                for(int j=i*i; j<=n; j+=i){
-                    check[j] = true;
+        for(int i=2; i*i<=N; i++){
+            if(!numbers[i]) {
+                for (int j = i*i; j <= N; j += i) {
+                    numbers[j] = true;
                 }
             }
         }
-
-        for(int i=m; i<=n; i++){
-            if (!check[i]) sb.append(i).append('\n');
+        StringBuilder sb = new StringBuilder();
+        for(int i=M; i<=N; i++){
+            if(!numbers[i]) sb.append(i).append('\n');
         }
-
         System.out.println(sb);
 
     }
