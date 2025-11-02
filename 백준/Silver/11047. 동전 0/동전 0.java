@@ -2,29 +2,28 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
-        int cnt = 0;
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        int[] coins = new int[N + 1];
+        int ans = 0;
 
-        List<Integer> coins = new ArrayList<>();
-
-        for(int i=0; i<n; i++){
-            coins.add(Integer.parseInt(br.readLine()));
+        for (int i = 1; i <= N; i++) {
+            coins[i] = Integer.parseInt(br.readLine());
         }
 
-        coins.sort(Comparator.reverseOrder());
-
-        for(int i : coins){
-            while (k >= i) {
-                cnt++;
-                k -= i;
+        for (int i = N; i >= 1; i--) {
+            if(K >= coins[i]){
+                ans += K/coins[i];
+                K %= coins[i];
             }
+            if(K == 0) break;
         }
-        System.out.println(cnt);
 
+        System.out.println(ans);
     }
 }
